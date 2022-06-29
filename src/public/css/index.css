@@ -134,3 +134,11 @@ html {
 background-image: linear-gradient(to right, #80b3ff, #4481eb, #5283ff, #3f86ed);
 box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
 }
+@media (min-width: 395px) {
+  .cat {
+    width: 250px;
+    height: 210px;
+    align-self: center;
+   
+  }
+}

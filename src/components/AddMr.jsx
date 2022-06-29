@@ -2,6 +2,7 @@ import React from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup';
 import Warning from '../public/imgs/icons/warning.png'
+import Cat from '../public/imgs/add/cat.png'
 
 const SignUpForm = () => {
     const formik = useFormik({
@@ -11,7 +12,7 @@ const SignUpForm = () => {
         },
         validationSchema: yup.object({
             field: yup.string().max(15, "Must be 30 characters or less").required("Please specify the field of the medical report."), 
-            report: yup.string().max(20, "Must be 500 characters or less").required("Please provide details of the results.")
+            report: yup.string().max(500, "Must be 500 characters or less").required("Please provide details of the results.")
         }),
         onSubmit: (values) => {
             alert(JSON.stringify(values, null, 2))
@@ -22,7 +23,7 @@ const SignUpForm = () => {
 
       <main className='container-fluid  pb-3'>
      
-          <div className="container bg-light pb-5 border rounded-3">
+          <div className="container bg-light  border rounded-3">
           <div className="row justify-content-center mt-5">
 
          
@@ -55,8 +56,11 @@ const SignUpForm = () => {
        
         
         
-        <input className='formbtn color-9 form-btn rounded- btn btn-primary' type='submit' />
-      
+        <button type="submit" className="formbtn color-9 form-btn rounded- btn mb-3 btn-primary">
+            Search
+       
+        </button>
+     <div  className='  d-flex align-items-end flex-column  '> <img  className='cat ' src={Cat} width='180' height='140'/></div>
       </form>
     
     </div>

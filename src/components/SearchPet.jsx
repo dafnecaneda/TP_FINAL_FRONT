@@ -47,7 +47,7 @@ export const SearchPet = () => {
 
       <div className="container mt-5 bg-light border rounded-3">
     <div className="row text-center justify-content-center">
-
+    <h4 className='m-4 fw-bold lh-1'>Pet Search results:</h4>
 {/* start of card */}
 
     <div className="col-xl-3 col-sm-6 m-5">
