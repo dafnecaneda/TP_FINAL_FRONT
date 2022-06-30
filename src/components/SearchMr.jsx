@@ -28,7 +28,7 @@ export const SearchMr = () => {
      
       <div className="d-flex align-items-center">
         <form className="w-100 me-3" role="search">
-          <input type="search" className="form-control" placeholder="Medical Record ID..." aria-label="Search"/>
+          <input type="search" className="form-control" placeholder="Search with your User ID..." aria-label="Search"/>
         </form>
 
         <div className="flex-shrink-0">
@@ -40,11 +40,11 @@ export const SearchMr = () => {
 
       <div className="container mt-5 bg-light border rounded-3">
     <div className="row text-center justify-content-center">
-<h4 className='m-4 fw-bold lh-1'>Medical Records Search results:</h4>
+<h4 className='m-4 fw-bold lh-1'>Medical Records:</h4>
 {/* start of card */}
     <div className="col-xl-3 col-sm-6 m-5">
             <div className="bg-primary cards bg-opacity-10 rounded  py-5 px-4">
-                <h5 className=" text-primary fw-bold">Laboratory</h5><span className="text-uppercase text-muted">record id</span><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur optio nihil, iure expedita dolorum debitis, voluptatem sed quia consequuntur voluptates labore possimus vitae commodi omnis nostrum fuga, odit accusantium neque?</p>
+                <h5 className=" text-primary fw-bold">Laboratory</h5><span className="text-uppercase text-muted">USER ID: #0153</span><p>Blood Exams prior to Surgery for Sapying.</p>
                 <ul className="social mb-0 list-inline mt-3">
                     <li className="list-inline-item"><a href="#" className="social-link"><img src={Edit} alt="" width="50" height="50" className="img-fluid "/></a></li>
                     <li className="list-inline-item"><a href="#" className="social-link"><img src={Download} alt="" width="50" height="50" className="img-fluid "/></a></li>
@@ -56,7 +56,7 @@ export const SearchMr = () => {
 
 <div className="col-xl-3 col-sm-6 m-5">
             <div className="bg-primary cards bg-opacity-10 rounded  py-5 px-4">
-                <h5 className=" text-primary fw-bold">Laboratory</h5><span className="text-uppercase text-muted">record id</span><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur optio nihil, iure expedita dolorum debitis, voluptatem sed quia consequuntur voluptates labore possimus vitae commodi omnis nostrum fuga, odit accusantium neque?</p>
+                <h5 className=" text-primary fw-bold">X Rays</h5><span className="text-uppercase text-muted">USER ID: #0153</span><p>X rays of Chest to follow up Asthma. Moderate results. Patient stable case. Images attached to file for Download.</p>
                 <ul className="social mb-0 list-inline mt-3">
                     <li className="list-inline-item"><a href="#" className="social-link"><img src={Edit} alt="" width="50" height="50" className="img-fluid "/></a></li>
                     <li className="list-inline-item"><a href="#" className="social-link"><img src={Download} alt="" width="50" height="50" className="img-fluid "/></a></li>

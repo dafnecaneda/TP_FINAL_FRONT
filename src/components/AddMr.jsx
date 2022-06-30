@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import Warning from '../public/imgs/icons/warning.png'
 import Cat from '../public/imgs/add/cat.png'
 
-const SignUpForm = () => {
+const AddMr = () => {
     const formik = useFormik({
         initialValues: {
             field: "",
@@ -57,7 +57,7 @@ const SignUpForm = () => {
         
         
         <button type="submit" className="formbtn color-9 form-btn rounded- btn mb-3 btn-primary">
-            Search
+           Submit
        
         </button>
      <div  className='  d-flex align-items-end flex-column  '> <img  className='cat ' src={Cat} width='180' height='140'/></div>
@@ -69,4 +69,4 @@ const SignUpForm = () => {
   )
 }
 
-export default SignUpForm
+export default AddMr
