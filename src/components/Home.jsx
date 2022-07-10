@@ -1,7 +1,7 @@
 import React from "react";
 import Dog from "../public/imgs/home/dumbodog.png";
 import HowTo from "./HowTo";
-export const Home = () => {
+const Home = () => {
   return (
     <>
       <div class="bg1 px-4 py-5 mt-5 text-center">
@@ -42,3 +42,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;

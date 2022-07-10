@@ -1,72 +1,132 @@
-import React from 'react'
-import { useFormik } from 'formik'
-import * as yup from 'yup';
-import Warning from '../public/imgs/icons/warning.png'
-import Cat from '../public/imgs/add/cat.png'
+import React, { useState, useEffect } from "react";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import Warning from "../public/imgs/icons/warning.png";
+import Cat from "../public/imgs/add/cat.png";
+import Axios from "axios";
 
 const AddMr = () => {
-    const formik = useFormik({
-        initialValues: {
-            field: "",
-            report: ""
-        },
-        validationSchema: yup.object({
-            field: yup.string().max(15, "Must be 30 characters or less").required("Please specify the field of the medical report."), 
-            report: yup.string().max(500, "Must be 500 characters or less").required("Please provide details of the results.")
-        }),
-        onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2))
-        }
-    })
+  const [Field, setField] = useState("");
+  const [Report, setReport] = useState("");
+  const submitNewMr = () => {
+    Axios.post("http://localhost:3030/mr", {
+      field: Field,
+      report: Report,
+    });
+  };
+  const formik = useFormik({
+    initialValues: {
+      field: "",
+      report: "",
+    },
+    validationSchema: yup.object({
+      field: yup
+        .string()
+        .max(15, "Must be 30 characters or less")
+        .required("Please specify the field of the medical report."),
+      report: yup
+        .string()
+        .max(500, "Must be 500 characters or less")
+        .required("Please provide details of the results."),
+    }),
+    onSubmit: (values) => {
+      alert("succesful");
+    },
+  });
   return (
+    <main className="container-fluid mb-5 pb-3">
+      <div className="container bg-light card border rounded-3">
+        <div className="row justify-content-center mt-5">
+          <form
+            className="col-10 col-sm-8 col-md-6 lg-4"
+            onSubmit={formik.handleSubmit}
+          >
+            <label className="form-label lh-1 fw-bold" htmlFor="field">
+              Field{" "}
+            </label>
+            <input
+              className=" form-control"
+              id="field"
+              type="field"
+              name="field"
+              onChange={(e) => {
+                setField(e.target.initialValues);
+              }}
+              {...formik.getFieldProps("field")}
+            />
+            {formik.touched.field && formik.errors.field && (
+              <div
+                className="alert alert-danger d-flex align-items-center m-2"
+                role="alert"
+              >
+                <img
+                  className="img-fluid "
+                  src={Warning}
+                  width="30"
+                  height="30"
+                  alt="Warning"
+                />
+                <div className="ms-2">{formik.errors.field}</div>
+              </div>
+            )}
 
+            <label className="lh-1 fw-bold mt-4 form-label" htmlFor="report">
+              Report{" "}
+            </label>
+            <textarea
+              className="form-control"
+              id="report"
+              type="report"
+              name="report"
+              rows="3"
+              onChange={(e) => {
+                setReport(e.target.initialValues);
+              }}
+              {...formik.getFieldProps("report")}
+            />
+            {formik.touched.report && formik.errors.report && (
+              <div
+                className="alert alert-danger d-flex align-items-center m-2"
+                role="alert"
+              >
+                <img
+                  className="img-fluid "
+                  src={Warning}
+                  width="30"
+                  height="30"
+                  alt="Warning"
+                />
+                <div className="ms-2">{formik.errors.report}</div>
+              </div>
+            )}
 
-      <main className='container-fluid  pb-3'>
-     
-          <div className="container bg-light  border rounded-3">
-          <div className="row justify-content-center mt-5">
-
-         
-      <form  className='col-10 col-sm-8 col-md-6 lg-4' onSubmit={formik.handleSubmit}>
-          
-          <label className='form-label lh-1 fw-bold' htmlFor="field">Field </label>
-          <input className=' form-control' id='field' type="field" name='field' {...formik.getFieldProps("field")}/>  
-           {formik.touched.field && formik.errors.field && 
-            <div className="alert alert-danger d-flex align-items-center m-2" role="alert">
-            <img className='img-fluid ' src={Warning} width='30' height='30' alt="Warning"/>
-            <div className='ms-2'>
-            {formik.errors.field}
+            <div class="mb-3">
+              <label for="formFileSm" className="mt-4 form-label">
+                You may include an Image of the Report
+              </label>
+              <input
+                className="form-control form-control-sm"
+                id="formFileSm"
+                type="file"
+              />
             </div>
-            </div>}
 
-          <label className='lh-1 fw-bold mt-4 form-label' htmlFor="report">Report </label>
-          <textarea className='form-control' id='report' type="report" name='report' rows="3" {...formik.getFieldProps("report")} />
-          {formik.touched.report && formik.errors.report &&
-           <div className="alert alert-danger d-flex align-items-center m-2" role="alert">
-           <img className='img-fluid ' src={Warning} width='30' height='30' alt="Warning"/>
-           <div className='ms-2'>
-           {formik.errors.report}
-           </div>
-           </div>}
-        
-        <div class="mb-3">
-        <label for="formFileSm" className="mt-4 form-label">You may include an Image of the Report</label>
-        <input className="form-control form-control-sm" id="formFileSm" type="file"/>
+            <button
+              type="submit"
+              className="formbtn color-9 form-btn rounded- btn mb-3 btn-primary"
+              onClick={submitNewMr}
+            >
+              Submit
+            </button>
+            <div className="  d-flex align-items-end flex-column  ">
+              {" "}
+              <img className="cat " src={Cat} width="180" height="140" />
+            </div>
+          </form>
         </div>
-       
-        
-        
-        <button type="submit" className="formbtn color-9 form-btn rounded- btn mb-3 btn-primary">
-           Submit
-       
-        </button>
-     <div  className='  d-flex align-items-end flex-column  '> <img  className='cat ' src={Cat} width='180' height='140'/></div>
-      </form>
-    
-    </div>
-    </div>
+      </div>
     </main>
-  )
-}
+  );
+};
 
-export default AddMr
+export default AddMr;
