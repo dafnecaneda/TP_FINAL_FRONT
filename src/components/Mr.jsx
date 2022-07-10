@@ -32,8 +32,8 @@ export const Mr = () => {
             </Link>
           </button>
         </div>
+        <Outlet></Outlet>
       </div>
-      <Outlet></Outlet>
 
       <Footer />
     </>

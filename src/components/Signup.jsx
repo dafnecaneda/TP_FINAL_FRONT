@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Warning from "../public/imgs/icons/warning.png";
@@ -6,6 +6,8 @@ import Image from "../public/imgs/signup/su.png";
 import { Navbar } from "./Navbar";
 
 const Signup = () => {
+  const [token, setToken] = useState("");
+  let tokenSu = null;
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -43,15 +45,19 @@ const Signup = () => {
     }),
     onSubmit: async (values) => {
       const NewUser = { ...values };
-      await fetch("http://localhost:3030/users/", {
+      let result = await fetch("http://localhost:3030/users/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(NewUser),
-      }).then(() => {
-        console.log(NewUser);
       });
+      result = await result.json().then(setToken(result.JWT));
+      let tokenSu = result.JWT;
+      console.log(result);
+      console.log(tokenSu);
+      localStorage.setItem("token", tokenSu);
     },
   });
+
   return (
     <>
       <Navbar />
@@ -66,7 +72,6 @@ const Signup = () => {
                       <p className="lh-1 text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
                         Sign up
                       </p>
-
                       <form
                         className="mx-1 mx-md-4"
                         onSubmit={formik.handleSubmit}

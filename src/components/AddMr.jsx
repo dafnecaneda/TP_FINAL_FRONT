@@ -3,17 +3,8 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import Warning from "../public/imgs/icons/warning.png";
 import Cat from "../public/imgs/add/cat.png";
-import Axios from "axios";
 
 const AddMr = () => {
-  const [Field, setField] = useState("");
-  const [Report, setReport] = useState("");
-  const submitNewMr = () => {
-    Axios.post("http://localhost:3030/mr", {
-      field: Field,
-      report: Report,
-    });
-  };
   const formik = useFormik({
     initialValues: {
       field: "",
@@ -29,8 +20,15 @@ const AddMr = () => {
         .max(500, "Must be 500 characters or less")
         .required("Please provide details of the results."),
     }),
-    onSubmit: (values) => {
-      alert("succesful");
+    onSubmit: async (values) => {
+      const NewUser = { ...values };
+      await fetch("http://localhost:3030/mr/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(NewUser),
+      }).then(() => {
+        console.log(NewUser);
+      });
     },
   });
   return (
@@ -49,9 +47,6 @@ const AddMr = () => {
               id="field"
               type="field"
               name="field"
-              onChange={(e) => {
-                setField(e.target.initialValues);
-              }}
               {...formik.getFieldProps("field")}
             />
             {formik.touched.field && formik.errors.field && (
@@ -79,9 +74,6 @@ const AddMr = () => {
               type="report"
               name="report"
               rows="3"
-              onChange={(e) => {
-                setReport(e.target.initialValues);
-              }}
               {...formik.getFieldProps("report")}
             />
             {formik.touched.report && formik.errors.report && (
@@ -114,7 +106,6 @@ const AddMr = () => {
             <button
               type="submit"
               className="formbtn color-9 form-btn rounded- btn mb-3 btn-primary"
-              onClick={submitNewMr}
             >
               Submit
             </button>

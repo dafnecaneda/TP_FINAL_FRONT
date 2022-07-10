@@ -32,8 +32,8 @@ export const YourPets = () => {
             </Link>
           </button>
         </div>
+        <Outlet></Outlet>
       </div>
-      <Outlet></Outlet>
 
       <Footer />
     </>
