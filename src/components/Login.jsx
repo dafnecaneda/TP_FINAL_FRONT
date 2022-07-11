@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Warning from "../public/imgs/icons/warning.png";
@@ -6,6 +6,7 @@ import Image from "../public/imgs/login/login.png";
 import { Navbar } from "./Navbar";
 
 const Login = () => {
+  const [token, setToken] = useState("");
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -19,8 +20,18 @@ const Login = () => {
         .required("E-mail is required"),
       password: yup.string().required("Please Enter your password"),
     }),
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+      const login_user = { ...values };
+      let result = await fetch("http://localhost:3030/users/login/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(login_user),
+      });
+      result = await result.json().then(setToken(result.JWT));
+      let tokenSu = result.JWT;
+      console.log(result);
+      console.log(tokenSu);
+      localStorage.setItem("token", tokenSu);
     },
   });
   return (

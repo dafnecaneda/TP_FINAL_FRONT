@@ -21,13 +21,13 @@ const AddMr = () => {
         .required("Please provide details of the results."),
     }),
     onSubmit: async (values) => {
-      const NewUser = { ...values };
+      const NewMR = { ...values };
       await fetch("http://localhost:3030/mr/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(NewUser),
+        body: JSON.stringify(NewMR),
       }).then(() => {
-        console.log(NewUser);
+        console.log(NewMR);
       });
     },
   });
