@@ -4,8 +4,10 @@ import * as yup from "yup";
 import Warning from "../public/imgs/icons/warning.png";
 import Image from "../public/imgs/login/login.png";
 import { Navbar } from "./Navbar";
+import { useNavigate } from "react-router";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [token, setToken] = useState("");
   const formik = useFormik({
     initialValues: {
@@ -28,10 +30,17 @@ const Login = () => {
         body: JSON.stringify(login_user),
       });
       result = await result.json().then(setToken(result.JWT));
+      let userName = [result.name, result.lastName];
+      let userId = [result.userid];
+      let userEmail = [result.email];
       let tokenSu = result.JWT;
       console.log(result);
       console.log(tokenSu);
       localStorage.setItem("token", tokenSu);
+      localStorage.setItem("userName", userName);
+      localStorage.setItem("userId", userId);
+      localStorage.setItem("userEmail", userEmail);
+      navigate("/");
     },
   });
   return (
