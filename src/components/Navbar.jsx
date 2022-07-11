@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "../public/imgs/navbar/logo.png";
 import { Link } from "react-router-dom";
 export const Navbar = () => {
-  let user = localStorage.getItem("token");
+  let user = localStorage.getItem("userName");
   console.warn(user);
   return (
     <>
@@ -32,7 +32,10 @@ export const Navbar = () => {
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <Link
-                    to={"/Login"}
+                    onClick={() => {
+                      localStorage.removeItem("token");
+                    }}
+                    to={"/"}
                     className="nav-link navlink text-primary active"
                     aria-current="page"
                     href="login"
@@ -78,7 +81,7 @@ export const Navbar = () => {
                     aria-current="page"
                     href="mr"
                   >
-                    Name: {user}
+                    {user}
                   </Link>
                 </li>
               </ul>

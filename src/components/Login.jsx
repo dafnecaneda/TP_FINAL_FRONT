@@ -40,7 +40,7 @@ const Login = () => {
       localStorage.setItem("userName", userName);
       localStorage.setItem("userId", userId);
       localStorage.setItem("userEmail", userEmail);
-      navigate("/");
+      navigate("/signedup");
     },
   });
   return (
