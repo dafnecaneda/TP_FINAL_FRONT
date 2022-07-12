@@ -14,6 +14,9 @@ import { Mr } from "./components/Mr";
 import { SearchMr } from "./components/SearchMr";
 import AddMr from "./components/AddMr";
 import Signedup from "./components/Signedup";
+import IndexPet from "./components/IndexPet";
+import IndexMr from "./components/IndexMr";
+import UserPatch from "./components/userPatch";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -22,12 +25,15 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/" element={<App />}></Route>
         <Route path="/signedup" element={<Signedup />}></Route>
         <Route path="/Login" element={<Login />}></Route>
+        <Route path="/Patch" element={<UserPatch />}></Route>
         <Route path="/SignUp" element={<Signup />}></Route>
         <Route path="/YourPets" element={<YourPets />}>
+          <Route index element={<IndexPet />}></Route>
           <Route path=":invoiceNumber" element={<SearchPet />}></Route>
           <Route path="AddPet" element={<AddPet />}></Route>
         </Route>
         <Route path="/YourMr" element={<Mr />}>
+          <Route index element={<IndexMr />}></Route>
           <Route path=":invoiceNumber" element={<SearchMr />}></Route>
           <Route path="AddMr" element={<AddMr />}></Route>
         </Route>

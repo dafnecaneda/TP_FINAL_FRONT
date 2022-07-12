@@ -2,71 +2,44 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Warning from "../public/imgs/icons/warning.png";
-import Image from "../public/imgs/signup/su.png";
+import Image from "../public/imgs/login/login.png";
 import { Navbar } from "./Navbar";
 import { useNavigate } from "react-router";
 
-const Signup = () => {
+const UserPatch = () => {
   const navigate = useNavigate();
   const [token, setToken] = useState("");
-  let tokenSu = null;
+  let userToken = localStorage.getItem("token");
+  let useremail = localStorage.getItem("userEmail");
+  const userPatch = Number(localStorage.getItem("userId"));
   const formik = useFormik({
     initialValues: {
-      name: "",
-      lastName: "",
       email: "",
       password: "",
     },
     validationSchema: yup.object({
-      name: yup
-        .string()
-        .max(15, "Your answer must be 15 characters or less")
-        .required("Please provide your First Name.")
-        .matches(
-          /^[aA-zZ\s]+$/,
-          "Only alphabet letters are allowed for this field. "
-        ),
-      lastName: yup
-        .string()
-        .max(15, "Your answer must be 15 characters or less")
-        .required("Please provide your Last Name.")
-        .matches(
-          /^[aA-zZ\s]+$/,
-          "Only alphabet letters are allowed for this field. "
-        ),
       email: yup
         .string()
         .email("Field should contain a valid e-mail")
         .max(255)
         .required("E-mail is required"),
       password: yup.string().required("Please Enter your password"),
-      // .matches(
-      //   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      //   "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
-      // ),
     }),
     onSubmit: async (values) => {
-      const NewUser = { ...values };
-      let result = await fetch("http://localhost:3030/users/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(NewUser),
+      const patch_user = { ...values };
+      let result = await fetch(`http://localhost:3030/users/${userPatch}`, {
+        method: "PATCH",
+        headers: {
+          Authorization: userToken,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(patch_user),
       });
-      result = await result.json().then(setToken(result.JWT));
-      let userName = [result.name, result.lastName];
-      let userId = [result.userid];
-      let userEmail = [result.email];
-      let tokenSu = result.JWT;
+      result = await result.json();
       console.log(result);
-      console.log(tokenSu);
-      localStorage.setItem("token", tokenSu);
-      localStorage.setItem("userName", userName);
-      localStorage.setItem("userId", userId);
-      localStorage.setItem("userEmail", userEmail);
       navigate("/signedup");
     },
   });
-
   return (
     <>
       <Navbar />
@@ -271,4 +244,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default UserPatch;

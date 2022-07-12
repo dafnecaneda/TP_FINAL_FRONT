@@ -34,6 +34,8 @@ export const Navbar = () => {
                   <Link
                     onClick={() => {
                       localStorage.removeItem("token");
+                      localStorage.removeItem("userName");
+                      localStorage.removeItem("userEmail");
                     }}
                     to={"/"}
                     className="nav-link navlink text-primary active"
@@ -55,6 +57,16 @@ export const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link
+                    to={"/Patch"}
+                    className="nav-link navlink"
+                    aria-current="page"
+                    href="home"
+                  >
+                    Patch
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
                     to={"/YourPets"}
                     className="nav-link navlink"
                     aria-current="page"
@@ -65,7 +77,7 @@ export const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link
-                    to={"YourMr"}
+                    to={"/YourMr"}
                     className="nav-link navlink"
                     aria-current="page"
                     href="mr"
@@ -75,7 +87,6 @@ export const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link
-                    title={user}
                     to={"/"}
                     className="nav-link navlink"
                     aria-current="page"
@@ -154,7 +165,7 @@ export const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link
-                    to={"YourMr"}
+                    to={"/YourMr"}
                     className="nav-link navlink"
                     aria-current="page"
                     href="mr"

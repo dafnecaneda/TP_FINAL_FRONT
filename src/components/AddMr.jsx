@@ -3,8 +3,10 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import Warning from "../public/imgs/icons/warning.png";
 import Cat from "../public/imgs/add/cat.png";
+import { useNavigate } from "react-router";
 
 const AddMr = () => {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       field: "",
@@ -22,13 +24,17 @@ const AddMr = () => {
     }),
     onSubmit: async (values) => {
       const NewMR = { ...values };
-      await fetch("http://localhost:3030/mr/", {
+      let user = localStorage.getItem("token");
+      let result = await fetch("http://localhost:3030/mr/", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          Authorization: user,
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(NewMR),
-      }).then(() => {
-        console.log(NewMR);
       });
+      result = await result.json();
+      console.log(result);
     },
   });
   return (
@@ -92,14 +98,15 @@ const AddMr = () => {
               </div>
             )}
 
-            <div class="mb-3">
-              <label for="formFileSm" className="mt-4 form-label">
+            <div className="mb-3">
+              <label htmlFor="formFileSm" className="mt-4 form-label">
                 You may include an Image of the Report
               </label>
               <input
                 className="form-control form-control-sm"
-                id="formFileSm"
+                id="filename"
                 type="file"
+                name="filename"
               />
             </div>
 

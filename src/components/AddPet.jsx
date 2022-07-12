@@ -3,8 +3,10 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import Warning from "../public/imgs/icons/warning.png";
 import Cat from "../public/imgs/add/cat.png";
+import { useNavigate } from "react-router";
 
 const AddPet = () => {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -58,12 +60,23 @@ const AddPet = () => {
         .required(
           " Only numbers accepted on this input. If your pet is not a year old yet you can put the number 0."
         ),
-      file: yup
+      filename: yup
         .mixed()
         .required("A picture must be provided for the Pet's data card"),
     }),
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+      const NewPet = { ...values };
+      let user = localStorage.getItem("token");
+      let result = await fetch("http://localhost:3030/pets/", {
+        method: "POST",
+        headers: {
+          Authorization: user,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(NewPet),
+      });
+      result = await result.json();
+      console.log(result);
     },
   });
   return (
@@ -246,10 +259,10 @@ const AddPet = () => {
               </label>
               <input
                 className="form-control form-control-sm"
-                id="formFileSm"
+                id="filename"
                 type="file"
-                name="file"
-                {...formik.getFieldProps("file")}
+                name="filename"
+                {...formik.getFieldProps("filename")}
               />
             </div>
             {formik.touched.file && formik.errors.file && (
