@@ -32,7 +32,7 @@ const UserPatch = () => {
     onSubmit: async (values) => {
       const patch_user = { ...values };
       let result = await fetch(
-        `https://apipetstorage.herokuapp.com/${userPatch}`,
+        `https://apipetstorage.herokuapp.com/users/${userPatch}`,
         {
           method: "PATCH",
           headers: {
@@ -42,14 +42,14 @@ const UserPatch = () => {
           body: JSON.stringify(patch_user),
         }
       );
+      console.log(userPatch);
+      console.log(values);
       result = await result.json();
       let Message = [result.message];
       let userName = [result.name, result.lastName];
-      let userId = [result.userid];
       let userEmail = [result.email];
       console.log(result);
       sessionStorage.setItem("userName", userName);
-      sessionStorage.setItem("userId", userId);
       sessionStorage.setItem("userEmail", userEmail);
       sessionStorage.setItem("Message", Message);
       navigate("/userAccount");
