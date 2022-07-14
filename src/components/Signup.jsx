@@ -60,11 +60,11 @@ const Signup = () => {
       let tokenSu = result.JWT;
       console.log(result);
       console.log(tokenSu);
-      localStorage.setItem("token", tokenSu);
-      localStorage.setItem("userName", userName);
-      localStorage.setItem("userId", userId);
-      localStorage.setItem("userEmail", userEmail);
-      localStorage.setItem("Message", Message);
+      sessionStorage.setItem("token", tokenSu);
+      sessionStorage.setItem("userName", userName);
+      sessionStorage.setItem("userId", userId);
+      sessionStorage.setItem("userEmail", userEmail);
+      sessionStorage.setItem("Message", Message);
       navigate("/userAccount");
     },
   });
