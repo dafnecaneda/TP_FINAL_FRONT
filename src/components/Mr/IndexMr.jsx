@@ -1,8 +1,8 @@
 import React from "react";
 
 const IndexMr = () => {
-  let userID = localStorage.getItem("userId");
-  let userName = localStorage.getItem("userName");
+  let userID = sessionStorage.getItem("userId");
+  let userName = sessionStorage.getItem("userName");
   return (
     <>
       <section className="">

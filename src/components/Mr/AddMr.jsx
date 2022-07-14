@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import Warning from "../public/imgs/icons/warning.png";
-import Cat from "../public/imgs/add/cat.png";
+import Warning from "../../public/imgs/icons/warning.png";
+import Cat from "../../public/imgs/add/cat.png";
 import { useNavigate } from "react-router";
 
 const AddMr = () => {
@@ -24,8 +24,8 @@ const AddMr = () => {
     }),
     onSubmit: async (values) => {
       const NewMR = { ...values };
-      let user = localStorage.getItem("token");
-      let result = await fetch("http://localhost:3030/mr/", {
+      let user = sessionStorage.getItem("token");
+      let result = await fetch("https://apipetstorage.herokuapp.com/mr/", {
         method: "POST",
         headers: {
           Authorization: user,
@@ -34,7 +34,10 @@ const AddMr = () => {
         body: JSON.stringify(NewMR),
       });
       result = await result.json();
+      let msg = [result.message];
       console.log(result);
+      sessionStorage.setItem("msg", msg);
+      // navigate("/YourPets");
     },
   });
   return (
@@ -109,7 +112,9 @@ const AddMr = () => {
                 name="filename"
               />
             </div>
-
+            <div className="text-center mb-4 fw-bold p-2 lh-1">
+              {sessionStorage.getItem("msg")}
+            </div>
             <button
               type="submit"
               className="formbtn color-9 form-btn rounded- btn mb-3 btn-primary"

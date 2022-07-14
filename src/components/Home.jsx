@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Dog from "../public/imgs/home/dumbodog.png";
 import HowTo from "./HowTo";
 const Home = () => {
@@ -29,11 +30,10 @@ const Home = () => {
             </a>
           </h5>
           <div class="d-grid gap-2 d-sm-flex justify-content-center">
-            <button
-              type="button"
-              class="btn-hover color-9  btn-primary fw-bold btn-lg px-4 gap-3"
-            >
-              SIGN UP
+            <button className="btn-hover color-9">
+              <Link to={"/signup"} className="text-decoration-none text-white">
+                Let's get started !
+              </Link>
             </button>
           </div>
         </div>

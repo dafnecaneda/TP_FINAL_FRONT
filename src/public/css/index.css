@@ -1,6 +1,10 @@
 body,
 html {
   font-family: 'Nunito', sans-serif;
+  background: #CAEAFF;
+  background: -webkit-linear-gradient(bottom, #CAEAFF, #FCFFFE);
+  background: -moz-linear-gradient(bottom, #CAEAFF, #FCFFFE);
+  background: linear-gradient(to top, #CAEAFF, #FCFFFE);
 /* Created with https://www.css-gradient.com */
 }
 .bg1 {
@@ -187,4 +191,13 @@ box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
     
    
   }
+}
+
+/* USERACCOUNT */
+@media (max-width: 375px) {
+  .Yaf {
+    width: 300px;
+    height: 250px;
+  }
+
 }

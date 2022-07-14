@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import Warning from "../public/imgs/icons/warning.png";
-import Image from "../public/imgs/login/login.png";
-import { Navbar } from "./Navbar";
+import Warning from "../../public/imgs/icons/warning.png";
+import Image from "../../public/imgs/patch/user.png";
+
 import { useNavigate } from "react-router";
+import { Navbar } from "../Navbar";
 
 const UserPatch = () => {
   const navigate = useNavigate();
   const [token, setToken] = useState("");
-  let userToken = localStorage.getItem("token");
-  let useremail = localStorage.getItem("userEmail");
-  const userPatch = Number(localStorage.getItem("userId"));
+  let userToken = sessionStorage.getItem("token");
+  const userPatch = Number(sessionStorage.getItem("userId"));
   const formik = useFormik({
     initialValues: {
       email: "",
+      name: "",
+      lastName: "",
       password: "",
     },
     validationSchema: yup.object({
@@ -23,21 +25,34 @@ const UserPatch = () => {
         .email("Field should contain a valid e-mail")
         .max(255)
         .required("E-mail is required"),
+      name: yup.string().max(255).required("Name is required"),
+      lastName: yup.string().max(255).required("Last Name is required"),
       password: yup.string().required("Please Enter your password"),
     }),
     onSubmit: async (values) => {
       const patch_user = { ...values };
-      let result = await fetch(`http://localhost:3030/users/${userPatch}`, {
-        method: "PATCH",
-        headers: {
-          Authorization: userToken,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(patch_user),
-      });
+      let result = await fetch(
+        `https://apipetstorage.herokuapp.com/${userPatch}`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: userToken,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(patch_user),
+        }
+      );
       result = await result.json();
+      let Message = [result.message];
+      let userName = [result.name, result.lastName];
+      let userId = [result.userid];
+      let userEmail = [result.email];
       console.log(result);
-      navigate("/signedup");
+      sessionStorage.setItem("userName", userName);
+      sessionStorage.setItem("userId", userId);
+      sessionStorage.setItem("userEmail", userEmail);
+      sessionStorage.setItem("Message", Message);
+      navigate("/userAccount");
     },
   });
   return (
@@ -52,7 +67,7 @@ const UserPatch = () => {
                   <div className="row justify-content-center">
                     <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                       <p className="lh-1 text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                        Sign up
+                        Modify account info.
                       </p>
                       <form
                         className="mx-1 mx-md-4"
@@ -229,6 +244,8 @@ const UserPatch = () => {
                     <div className="col-md-10 col-lg-6 col-xl-4  d-flex align-items-center order-1 order-lg-2">
                       <img
                         src={Image}
+                        width="400"
+                        height="400"
                         className="img-fluid d-block ms-5 mt-5"
                         alt="Sample image"
                       />

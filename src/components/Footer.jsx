@@ -5,33 +5,34 @@ import IG from "../public/imgs/footer/instagram.png";
 import WU from "../public/imgs/footer/whatsapp.png";
 import DOG from "../public/imgs/footer/dogfooter.webp";
 import Logo from "../public/imgs/navbar/logo.png";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <>
       <footer className="section2">
         <div className="container">
-          <div className="row text-center d-flex justify-content-center pt-5 mb-3">
+          <div className="row text-center d-flex justify-content-center pt-5 ">
             <div className="col-md-2 mb-3">
               <h6 className="text-uppercase fw-bold">
-                <a className="nav-link a" href="products">
+                <Link to={"*"} className="nav-link a" href="products">
                   About Us
-                </a>
+                </Link>
               </h6>
             </div>
 
             <div className="col-md-2 mb-3">
               <h6 className="text-uppercase pb-2 fw-bold">
-                <a className="nav-link a" href="contactUs">
+                <Link to={"*"} className="nav-link a" href="products">
                   Contact Us
-                </a>
+                </Link>
               </h6>
             </div>
 
             <div className="col-md-2 mb-3">
               <h6 className="text-uppercase fw-bold">
-                <a className="nav-link a" href="contactUs">
+                <Link to={"/"} className="nav-link a" href="products">
                   Home
-                </a>
+                </Link>
               </h6>
             </div>
           </div>
@@ -123,9 +124,9 @@ const Footer = () => {
 
         <img
           src={DOG}
-          width="500px"
-          height="500px"
-          className="img-fluid mx-auto d-block pt-3"
+          width="300px"
+          height="300px"
+          className="img-fluid mx-auto d-block"
           alt="cat"
         />
       </footer>

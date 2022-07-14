@@ -1,8 +1,8 @@
 import React from "react";
 
 const IndexPet = () => {
-  let userID = localStorage.getItem("userId");
-  let userName = localStorage.getItem("userName");
+  let userID = sessionStorage.getItem("userId");
+  let userName = sessionStorage.getItem("userName");
   return (
     <>
       <section className="">
@@ -17,7 +17,7 @@ const IndexPet = () => {
                         Hello {userName} !
                       </h5>
                       <span className="   font-monospace text-muted">
-                        Please use your ID : {userID} to acces your Pets
+                        Please use your ID : # {userID} to acces your Pets
                         information.
                       </span>
                     </div>

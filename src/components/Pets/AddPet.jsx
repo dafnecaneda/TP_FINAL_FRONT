@@ -1,8 +1,8 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import Warning from "../public/imgs/icons/warning.png";
-import Cat from "../public/imgs/add/cat.png";
+import Warning from "../../public/imgs/icons/warning.png";
+import Cat from "../../public/imgs/add/cat.png";
 import { useNavigate } from "react-router";
 
 const AddPet = () => {
@@ -60,14 +60,11 @@ const AddPet = () => {
         .required(
           " Only numbers accepted on this input. If your pet is not a year old yet you can put the number 0."
         ),
-      filename: yup
-        .mixed()
-        .required("A picture must be provided for the Pet's data card"),
     }),
     onSubmit: async (values) => {
       const NewPet = { ...values };
-      let user = localStorage.getItem("token");
-      let result = await fetch("http://localhost:3030/pets/", {
+      let user = sessionStorage.getItem("token");
+      let result = await fetch("https://apipetstorage.herokuapp.com/pets/", {
         method: "POST",
         headers: {
           Authorization: user,
@@ -76,7 +73,11 @@ const AddPet = () => {
         body: JSON.stringify(NewPet),
       });
       result = await result.json();
+      const petId = [result.id];
+      const petMsg = [result.message];
       console.log(result);
+      sessionStorage.setItem("petMsg", petMsg);
+      sessionStorage.setItem("petId", petId);
     },
   });
   return (
@@ -280,6 +281,10 @@ const AddPet = () => {
                 <div className="ms-2">{formik.errors.file}</div>
               </div>
             )}
+
+            <div className="text-center font-monospace mb-4 fw-bold p-2 lh-1">
+              {sessionStorage.getItem("petMsg")}
+            </div>
 
             <button
               type="submit"

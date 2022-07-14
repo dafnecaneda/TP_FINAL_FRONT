@@ -47,13 +47,14 @@ const Signup = () => {
     }),
     onSubmit: async (values) => {
       const NewUser = { ...values };
-      let result = await fetch("http://localhost:3030/users/", {
+      let result = await fetch("https://apipetstorage.herokuapp.com/users/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(NewUser),
       });
       result = await result.json().then(setToken(result.JWT));
       let userName = [result.name, result.lastName];
+      let Message = [result.msg];
       let userId = [result.userid];
       let userEmail = [result.email];
       let tokenSu = result.JWT;
@@ -63,15 +64,16 @@ const Signup = () => {
       localStorage.setItem("userName", userName);
       localStorage.setItem("userId", userId);
       localStorage.setItem("userEmail", userEmail);
-      navigate("/signedup");
+      localStorage.setItem("Message", Message);
+      navigate("/userAccount");
     },
   });
 
   return (
     <>
       <Navbar />
-      <section>
-        <div className=" container h-100">
+      <section className="bg1">
+        <div className=" container  h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-lg-12 col-xl-11">
               <div className="mb-5 mt-5 rounded-4 card text-black">

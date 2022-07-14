@@ -1,10 +1,10 @@
 import React from "react";
+import HeaderImage from "../../public/imgs/searchpet/searchpet.png";
 import { Link, Outlet } from "react-router-dom";
-import Footer from "./Footer";
-import { Navbar } from "./Navbar";
-import HeaderImage from "../public/imgs/mr/mr.png";
+import { Navbar } from "../Navbar";
+import Footer from "../Footer";
 
-export const Mr = () => {
+export const YourPets = () => {
   return (
     <>
       <Navbar />
@@ -15,20 +15,20 @@ export const Mr = () => {
             src={HeaderImage}
             alt=""
             width="290"
-            height="330"
+            height="250"
           />
-          <h2 className="lh-1 fw-bold">MEDICAL RECORDS</h2>
+          <h2 className="lh-1 fw-bold 3">YOUR PETS</h2>
           <p className="lead">
-            Here you can Add and Search for the Records of your Pet.
+            Here you can Add, Search, and Delete your Pets information.
           </p>
           <button className="btn-hover color-9">
-            <Link to={"SearchMr"} className="text-decoration-none text-white">
-              Search MR
+            <Link to={"SearchPet"} className="text-decoration-none text-white">
+              Search Pet
             </Link>
           </button>
           <button className="btn-hover color-9">
-            <Link to={"AddMr"} className="text-decoration-none text-white">
-              Add MR
+            <Link to={"AddPet"} className="text-decoration-none text-white">
+              Add Pet
             </Link>
           </button>
         </div>

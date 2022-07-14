@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import Warning from "../public/imgs/icons/warning.png";
-import Image from "../public/imgs/login/login.png";
-import { Navbar } from "./Navbar";
+import Image from "../../public/imgs/forgot/mail.png";
+import Robot from "../../public/imgs/forgot/forgot.png";
+import Warning from "../../public/imgs/icons/warning.png";
+import { Navbar } from "../Navbar";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const ForgotPass = () => {
   const navigate = useNavigate();
   const [token, setToken] = useState("");
   const formik = useFormik({
     initialValues: {
       email: "",
-      password: "",
     },
     validationSchema: yup.object({
       email: yup
@@ -21,12 +21,11 @@ const Login = () => {
         .email("Field should contain a valid e-mail")
         .max(255)
         .required("E-mail is required"),
-      password: yup.string().required("Please Enter your password"),
     }),
     onSubmit: async (values) => {
       const login_user = { ...values };
       let result = await fetch(
-        "https://apipetstorage.herokuapp.com/users/login/",
+        "https://apipetstorage.herokuapp.com/users/forgot-password/",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -34,23 +33,14 @@ const Login = () => {
         }
       );
       result = await result.json().then(setToken(result.JWT));
-      let Message = [result.message];
-      let userName = [result.name, result.lastName];
-      let userId = [result.userid];
-      let userEmail = [result.email];
-      let error = [result.error];
       let tokenSu = result.JWT;
-      console.log(result);
+      let message = result.message;
+      console.log(message);
       console.log(tokenSu);
       sessionStorage.setItem("token", tokenSu);
-      sessionStorage.setItem("userName", userName);
-      sessionStorage.setItem("userId", userId);
-      sessionStorage.setItem("userEmail", userEmail);
-      sessionStorage.setItem("Message", Message);
-      // navigate("/userAccount");
+      sessionStorage.setItem("message", message);
     },
   });
-  const isUnde = sessionStorage.getItem("token");
   return (
     <>
       <Navbar />
@@ -63,7 +53,7 @@ const Login = () => {
                   <div className="row justify-content-center">
                     <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                       <p className="lh-1 text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-5">
-                        Login
+                        Forgot Password ?
                       </p>
 
                       <form
@@ -105,69 +95,11 @@ const Login = () => {
                             )}
                           </div>
                         </div>
-                        <div className="d-flex flex-row align-items-center mb-4">
-                          <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
-                          <div className="form-outline flex-fill mb-0">
-                            <input
-                              className=" form-control"
-                              id="password"
-                              type="password"
-                              name="password"
-                              {...formik.getFieldProps("password")}
-                            />
-                            <label
-                              className="form-label"
-                              htmlFor="form3Example4c"
-                            >
-                              Password
-                            </label>
-                            {formik.touched.password && formik.errors.password && (
-                              <div
-                                className="alert alert-danger d-flex align-items-center m-2"
-                                role="alert"
-                              >
-                                <img
-                                  className="img-fluid "
-                                  src={Warning}
-                                  width="30"
-                                  height="30"
-                                  alt="Warning"
-                                />
-                                <div className="ms-2">
-                                  {formik.errors.password}
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        </div>
+
                         <div className="text-center mb-4 fw-bold p-2 lh-1">
-                          {sessionStorage.getItem("Message")}
+                          {sessionStorage.getItem("message")}
                         </div>
 
-                        <div className="form-check d-flex justify-content-center mb-5">
-                          <div class="col d-flex justify-content-center">
-                            <div class="form-check">
-                              <input
-                                class="form-check-input me-2"
-                                type="checkbox"
-                                value=""
-                                id="form2Example31"
-                                checked
-                              />
-                              <label
-                                class="form-check-label"
-                                for="form2Example31"
-                              >
-                                {" "}
-                                Remember me{" "}
-                              </label>
-                            </div>
-                          </div>
-
-                          <div class="col">
-                            <Link to={"/forgotPass"}>Forgot password?</Link>
-                          </div>
-                        </div>
                         <div class="text-center">
                           <p>
                             Not a member? <Link to={"/signup"}>Register</Link>
@@ -185,8 +117,8 @@ const Login = () => {
                     </div>
                     <div className="col-md-10 col-lg-6 col-xl-4  d-flex align-items-center order-1 order-lg-2">
                       <img
-                        src={Image}
-                        className="img-fluid d-block mt-5"
+                        src={Robot}
+                        className="img-fluid d-block mx-5 mt-5"
                         alt="Sample image"
                       />
                     </div>
@@ -201,4 +133,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgotPass;

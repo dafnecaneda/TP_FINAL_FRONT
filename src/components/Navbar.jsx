@@ -2,11 +2,11 @@ import React from "react";
 import Logo from "../public/imgs/navbar/logo.png";
 import { Link } from "react-router-dom";
 export const Navbar = () => {
-  let user = localStorage.getItem("userName");
+  let user = sessionStorage.getItem("userId");
   console.warn(user);
   return (
     <>
-      {localStorage.getItem("token") ? (
+      {sessionStorage.getItem("token") ? (
         <nav className="mt-4 navbar navbar-expand-lg navbar-light">
           <div className="container-fluid">
             <a className="navbar-brand" href="/">
@@ -32,21 +32,6 @@ export const Navbar = () => {
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <Link
-                    onClick={() => {
-                      localStorage.removeItem("token");
-                      localStorage.removeItem("userName");
-                      localStorage.removeItem("userEmail");
-                    }}
-                    to={"/"}
-                    className="nav-link navlink text-primary active"
-                    aria-current="page"
-                    href="login"
-                  >
-                    Logout
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
                     to={"/"}
                     className="nav-link navlink"
                     aria-current="page"
@@ -57,12 +42,12 @@ export const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link
-                    to={"/Patch"}
-                    className="nav-link navlink"
+                    to={"/userAccount"}
+                    className="nav-link navlink text-primary active"
                     aria-current="page"
                     href="home"
                   >
-                    Patch
+                    Settings
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -85,14 +70,25 @@ export const Navbar = () => {
                     Medical Records
                   </Link>
                 </li>
+
                 <li className="nav-item">
                   <Link
+                    onClick={() => {
+                      sessionStorage.removeItem("token");
+                      sessionStorage.removeItem("userName");
+                      sessionStorage.removeItem("userEmail");
+                      sessionStorage.removeItem("userId");
+                      sessionStorage.removeItem("msg");
+                      sessionStorage.removeItem("Message");
+                      sessionStorage.removeItem("petMsg");
+                      sessionStorage.removeItem("petId");
+                    }}
                     to={"/"}
-                    className="nav-link navlink"
+                    className="nav-link navlink "
                     aria-current="page"
-                    href="mr"
+                    href="login"
                   >
-                    {user}
+                    Logout
                   </Link>
                 </li>
               </ul>
@@ -126,7 +122,7 @@ export const Navbar = () => {
                 <li className="nav-item">
                   <Link
                     to={"/Login"}
-                    className="nav-link navlink text-primary active"
+                    className="nav-link navlink  "
                     aria-current="page"
                     href="login"
                   >
@@ -136,7 +132,7 @@ export const Navbar = () => {
                 <li className="nav-item">
                   <Link
                     to={"/Signup"}
-                    className="nav-link navlink"
+                    className="nav-link navlink  text-primary active"
                     aria-current="page"
                     href="signup"
                   >
