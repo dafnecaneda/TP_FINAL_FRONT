@@ -1,6 +1,6 @@
 body,
 html {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito', sans-serif !important;
   background: #CAEAFF;
   background: -webkit-linear-gradient(bottom, #CAEAFF, #FCFFFE);
   background: -moz-linear-gradient(bottom, #CAEAFF, #FCFFFE);
