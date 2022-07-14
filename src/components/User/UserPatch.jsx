@@ -11,7 +11,7 @@ const UserPatch = () => {
   const navigate = useNavigate();
   const [token, setToken] = useState("");
   let userToken = sessionStorage.getItem("token");
-  const userPatch = Number(sessionStorage.getItem("userId"));
+  const userPatch = sessionStorage.getItem("userId");
   const formik = useFormik({
     initialValues: {
       email: "",
