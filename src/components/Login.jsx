@@ -177,7 +177,7 @@ const Login = () => {
                         <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                           <button
                             type="submit"
-                            className="formbtn mt-4 color-9 form-btn rounded- btn mb-3 btn-primary"
+                            className="formbtn mt-4 color-9 form-btn  mb-3"
                           >
                             Submit
                           </button>
