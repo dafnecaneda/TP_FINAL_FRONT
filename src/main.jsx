@@ -16,7 +16,7 @@ import AddMr from "./components/Mr/AddMr";
 import UserAccount from "./components/User/UserAccount";
 import IndexPet from "./components/Pets/IndexPet";
 import IndexMr from "./components/Mr/IndexMr";
-import UserPatch from "./components/User/userPatch";
+import UserPatch from "./components/User/UserPatch";
 import ForgotPass from "./components/User/ForgotPass";
 import Catch from "./components/Catch";
 import PetPatch from "./components/Pets/PetPatch";
