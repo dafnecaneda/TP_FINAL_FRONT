@@ -5,7 +5,7 @@ import Warning from "../public/imgs/icons/warning.png";
 import Image from "../public/imgs/signup/su.png";
 import { Navbar } from "./Navbar";
 import { useNavigate } from "react-router";
-
+import "../public/css/index.css";
 const Signup = () => {
   const navigate = useNavigate();
   const [token, setToken] = useState("");

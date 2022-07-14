@@ -6,6 +6,7 @@ import Image from "../public/imgs/login/login.png";
 import { Navbar } from "./Navbar";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import "../public/css/index.css";
 
 const Login = () => {
   const navigate = useNavigate();

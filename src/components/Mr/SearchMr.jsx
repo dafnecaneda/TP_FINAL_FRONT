@@ -3,7 +3,7 @@ import Delete from "../../public/imgs/icons/delete.png";
 import Download from "../../public/imgs/icons/download.png";
 import Edit from "../../public/imgs/icons/edit.png";
 import { useSearchParams, useNavigate, Link } from "react-router-dom";
-
+import "../../public/css/index.css";
 export const SearchMr = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();

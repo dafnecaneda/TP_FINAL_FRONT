@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import Warning from "../../public/imgs/icons/warning.png";
 import Image from "../../public/imgs/patch/user.png";
-
+import "../../public/css/index.css";
 import { useNavigate } from "react-router";
 import { Navbar } from "../Navbar";
 

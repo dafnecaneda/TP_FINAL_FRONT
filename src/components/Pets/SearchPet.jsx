@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Delete from "../../public/imgs/icons/delete.png";
 import Add from "../../public/imgs/icons/add.png";
-import Edit from "../../public/imgs/icons/edit.png";
+import "../../public/css/index.css";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 export const SearchPet = () => {
   const navigate = useNavigate();

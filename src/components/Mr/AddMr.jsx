@@ -4,7 +4,7 @@ import * as yup from "yup";
 import Warning from "../../public/imgs/icons/warning.png";
 import Cat from "../../public/imgs/add/cat.png";
 import { useNavigate } from "react-router";
-
+import "../../public/css/index.css";
 const AddMr = () => {
   const navigate = useNavigate();
   const formik = useFormik({
