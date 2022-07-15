@@ -12,7 +12,7 @@ const PetPatch = () => {
 
   let userToken = sessionStorage.getItem("token");
 
-  const PetId = Number(sessionStorage.getItem("petId"));
+  const PetId = sessionStorage.getItem("petId");
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -69,14 +69,17 @@ const PetPatch = () => {
     }),
     onSubmit: async (values) => {
       const patch_pet = { ...values };
-      let result = await fetch(`https://apipetstorage.herokuapp.com/${PetId}`, {
-        method: "PATCH",
-        headers: {
-          Authorization: userToken,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(patch_pet),
-      });
+      let result = await fetch(
+        `https://apipetstorage.herokuapp.com/pets/${PetId}`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: userToken,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(patch_pet),
+        }
+      );
       result = await result.json();
       const petId = [result.id];
       const petMsg = [result.message];
