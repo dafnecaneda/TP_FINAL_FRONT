@@ -1,4 +1,4 @@
-# TP_FINAL_FRONT PETSTORAGE
+#PETSTORAGE REACTJS NODEJS full stack web app
 
 https://petstorage.herokuapp.com/
 
