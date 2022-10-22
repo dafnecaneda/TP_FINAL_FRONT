@@ -39,11 +39,13 @@ const Signup = () => {
         .email("Field should contain a valid e-mail")
         .max(255)
         .required("E-mail is required"),
-      password: yup.string().required("Please Enter your password"),
-      // .matches(
-      //   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      //   "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
-      // ),
+      password: yup
+        .string()
+        .required("Please Enter your password")
+        .matches(
+          /^(?=.*[A-Za-z])[A-Za-z\d]{8,}$/,
+          "Must Contain 8 Characters and must include, One Uppercase, One Lowercase, One Number."
+        ),
     }),
     onSubmit: async (values) => {
       const NewUser = { ...values };
