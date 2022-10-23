@@ -20,6 +20,7 @@ import UserPatch from "./components/User/UserPatch";
 import ForgotPass from "./components/User/ForgotPass";
 import Catch from "./components/Catch";
 import PetPatch from "./components/Pets/PetPatch";
+import ContactUs from "./components/ContactUs";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -42,6 +43,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="AddMr" element={<AddMr />}></Route>
         </Route>
         <Route path="*" element={<Catch />} />
+        <Route path="/ContactUs" element={<ContactUs />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
