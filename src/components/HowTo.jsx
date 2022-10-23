@@ -12,16 +12,18 @@ const HowTo = () => {
           Let's get you started with these easy steps.
         </p>
       </div>
-      <div class="bg-body pb-5 mx-auto howto">
-        <h2 class="p-5 lh-1 fw-bold font-monospace">Register your Pets</h2>
-        <p class="px-4 font-monospace">
+      <div class="bg-body pb-5 mb-5 mx-auto howto">
+        <h2 class="pt-5 pb-3 lh-1 fw-bold font-monospace">
+          Register your Pets
+        </h2>
+        <h6 class="px-3 mb-4 font-monospace">
           After your had SignedUp/LoggedIn you first have to Add a Pet to your
           Account.
-        </p>
-        <p class="font-monospace px-5">
+        </h6>
+        <h6 class="font-monospace mb-4 px-3">
           When you complete the Registration of your Pet we will provide you an
           ID that will correspond to that Pet only.
-        </p>
+        </h6>
         <img class="phone" src={two} width="400" height="700" />
         <img class="phone" src={one} width="400" height="700" />
         <img class="phone" src={three} width="400" height="700" />
