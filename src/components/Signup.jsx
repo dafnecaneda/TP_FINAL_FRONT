@@ -42,10 +42,14 @@ const Signup = () => {
       password: yup
         .string()
         .required("Please Enter your password")
-        .matches(
-          /^(?=.*[A-Za-z])[A-Za-z\d]{8,}$/,
-          "Must Contain 8 Characters and must include, One Uppercase, One Lowercase, One Number."
-        ),
+        // .matches(
+        //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/,
+        //   "Must contain no more and no less than 8 Characters, One Uppercase, One Lowercas and One Number"
+        // ),
+        .matches(/^(?=.*[a-z])/, "Must contain at least One Lowercase")
+        .matches(/^(?=.*[A-Z])/, "Must contain at leat One Uppercase")
+        .matches(/^(?=.*[0-9])/, "Must contain at least one number")
+        .matches(/^(?=.{8,})/, "Must be no more and no less than 8 characters"),
     }),
     onSubmit: async (values) => {
       const NewUser = { ...values };
