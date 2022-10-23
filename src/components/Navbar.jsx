@@ -151,7 +151,7 @@ export const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link
-                    to={"/"}
+                    to={"/AboutUs"}
                     className="nav-link navlink"
                     aria-current="page"
                     href=""
@@ -161,7 +161,7 @@ export const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link
-                    to={"/YourMr"}
+                    to={"/ContactUs"}
                     className="nav-link navlink"
                     aria-current="page"
                     href="mr"
