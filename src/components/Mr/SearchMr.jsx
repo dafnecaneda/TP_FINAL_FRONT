@@ -89,7 +89,7 @@ export const SearchMr = () => {
                         </span>
                         <p className="text-center">{e.report}</p>
                         <span className="text-uppercase list-inline-item text-muted">
-                          MR ID: # {e.id}
+                          Medical Record ID: # {e.id}
                         </span>
                         <ul className="social mb-0 list-inline mt-3">
                           {/* <li className="list-inline-item">

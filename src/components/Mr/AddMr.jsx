@@ -41,7 +41,7 @@ const AddMr = () => {
     },
   });
   return (
-    <main className="container-fluid mb-5 pb-3">
+    <main className="container-fluid pb-3">
       <div className="container bg-light card border rounded-3">
         <div className="row justify-content-center mt-5">
           <form

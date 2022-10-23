@@ -8,33 +8,34 @@ export const Mr = () => {
   return (
     <>
       <Navbar />
-      <div className="container">
-        <div className="py-5 text-center">
-          <img
-            className="d-block mx-auto mb-4"
-            src={HeaderImage}
-            alt=""
-            width="290"
-            height="330"
-          />
-          <h2 className="lh-1 fw-bold">MEDICAL RECORDS</h2>
-          <p className="lead">
-            Here you can Search, Add a new Medical Record or Delete.
-          </p>
-          <button className="btn-hover color-9">
-            <Link to={"SearchMr"} className="text-decoration-none text-white">
-              Search MR
-            </Link>
-          </button>
-          <button className="btn-hover color-9">
-            <Link to={"AddMr"} className="text-decoration-none text-white">
-              Add MR
-            </Link>
-          </button>
+      <div className="bg1">
+        <div className="container">
+          <div className="py-5 text-center">
+            <img
+              className="d-block mx-auto mb-4"
+              src={HeaderImage}
+              alt=""
+              width="290"
+              height="330"
+            />
+            <h2 className="lh-1 fw-bold">MEDICAL RECORDS</h2>
+            <p className="lead">
+              Here you can Search, Add a new Medical Record or Delete.
+            </p>
+            <button className="btn-hover color-9">
+              <Link to={"SearchMr"} className="text-decoration-none text-white">
+                Search MR
+              </Link>
+            </button>
+            <button className="btn-hover color-9">
+              <Link to={"AddMr"} className="text-decoration-none text-white">
+                Add MR
+              </Link>
+            </button>
+          </div>
+          <Outlet></Outlet>
         </div>
-        <Outlet></Outlet>
       </div>
-
       <Footer />
     </>
   );
