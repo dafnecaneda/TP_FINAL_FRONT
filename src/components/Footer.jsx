@@ -14,7 +14,7 @@ const Footer = () => {
           <div className="row text-center d-flex justify-content-center pt-5 ">
             <div className="col-md-2 mb-3">
               <h6 className="text-uppercase fw-bold">
-                <Link to={"*"} className="nav-link a" href="products">
+                <Link to={"/AboutUs"} className="nav-link a" href="products">
                   About Us
                 </Link>
               </h6>
@@ -22,7 +22,7 @@ const Footer = () => {
 
             <div className="col-md-2 mb-3">
               <h6 className="text-uppercase pb-2 fw-bold">
-                <Link to={"*"} className="nav-link a" href="products">
+                <Link to={"/ContactUs"} className="nav-link a" href="products">
                   Contact Us
                 </Link>
               </h6>
@@ -122,13 +122,7 @@ const Footer = () => {
           </a>
         </div>
 
-        <img
-          src={DOG}
-          width="300px"
-          height="300px"
-          className="img-fluid mx-auto d-block"
-          alt="cat"
-        />
+        <img src={DOG} width="360px" className="mx-auto d-block" alt="dog" />
       </footer>
     </>
   );
