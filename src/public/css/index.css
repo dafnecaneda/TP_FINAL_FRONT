@@ -18,7 +18,7 @@ background: linear-gradient(to top, #CAEAFF, #FCFFFE);
 background: #CAEAFF;
 background: -webkit-linear-gradient(top, #CAEAFF, #FCFFFE);
 background: -moz-linear-gradient(top, #CAEAFF, #FCFFFE);
-background: linear-gradient(to bottom, #CAEAFF, #FCFFFE);
+background: linear-gradient(to bottom, #CAEAFF, #FCFFFE, #CAEAFF);
 }
 /* NAVBAR */
 
@@ -167,20 +167,20 @@ box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75)!important;
 /* FOOTER */
 
 .section2 {
-  color: white;
-  background-color: rgb(82, 131, 255)!important;
+  color: #3065eb;
+  background-color: #CAEAFF!important;
 }
 
 .a {
-  color: white!important;
+  color: #3065eb!important;
 }
 
 
 /* HOWTO */
 .howto{
-  width: 95%; 
-  height: 100%px; 
-  border-radius: 21px 21px 0 0;
+  width: 85%; 
+  height: 100%; 
+  border-radius: 21px 21px 21px 21px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 

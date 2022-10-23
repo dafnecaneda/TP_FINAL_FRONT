@@ -63,7 +63,7 @@ export const SearchPet = () => {
         </div>
       </header>
 
-      <div className="container mt-5 mb-5 bg-light border rounded-3">
+      <div className="container mt-5 bg-light border rounded-3">
         <div className="row text-center justify-content-center">
           <h4 className="m-4 fw-bold lh-1">Pet Search results:</h4>
           {/* start of card */}
