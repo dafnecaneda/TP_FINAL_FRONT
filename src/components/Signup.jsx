@@ -4,8 +4,10 @@ import * as yup from "yup";
 import Warning from "../public/imgs/icons/warning.png";
 import Image from "../public/imgs/signup/su.png";
 import { Navbar } from "./Navbar";
+import Footer from "./Footer";
 import { useNavigate } from "react-router";
 import "../public/css/index.css";
+
 const Signup = () => {
   const navigate = useNavigate();
   const [token, setToken] = useState("");
@@ -275,6 +277,7 @@ const Signup = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 };
