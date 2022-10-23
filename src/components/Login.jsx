@@ -7,7 +7,7 @@ import { Navbar } from "./Navbar";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import "../public/css/index.css";
-
+import Footer from "./Footer";
 const Login = () => {
   const navigate = useNavigate();
   const [token, setToken] = useState("");
@@ -48,23 +48,24 @@ const Login = () => {
       sessionStorage.setItem("userId", userId);
       sessionStorage.setItem("userEmail", userEmail);
       sessionStorage.setItem("Message", Message);
-      // navigate("/userAccount");
+      navigate("/userAccount");
     },
   });
-  const isUnde = sessionStorage.getItem("token");
+  // const isUnde = sessionStorage.getItem("token");
+
   return (
     <>
       <Navbar />
-      <section className="">
-        <div className=" container vh-100 ">
-          <div className="row d-flex justify-content-center  align-items-center">
-            <div className="col-lg-12 vh-100 col-xl-11">
-              <div className="card rounded-4 mb-5 mt-5 text-black">
-                <div className="card-body  p-mb-5">
+      <section className="bg1">
+        <div className=" container  h-100">
+          <div className="row d-flex justify-content-center align-items-center h-100">
+            <div className="col-lg-12 col-xl-11">
+              <div className="mb-5 mt-5 rounded-4 card text-black">
+                <div className="card-body p-md-5">
                   <div className="row justify-content-center">
                     <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                      <p className="lh-1 text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-5">
-                        Login
+                      <p className="lh-1 text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                        Log in
                       </p>
 
                       <form
@@ -146,18 +147,18 @@ const Login = () => {
                         </div>
 
                         <div className="form-check d-flex justify-content-center mb-5">
-                          <div class="col d-flex justify-content-center">
-                            <div class="form-check">
+                          <div className="col d-flex justify-content-center">
+                            <div className="form-check">
                               <input
-                                class="form-check-input me-2"
+                                className="form-check-input me-2"
                                 type="checkbox"
                                 value=""
                                 id="form2Example31"
-                                checked
+                                defaultChecked
                               />
                               <label
-                                class="form-check-label"
-                                for="form2Example31"
+                                className="form-check-label"
+                                htmlFor="form2Example31"
                               >
                                 {" "}
                                 Remember me{" "}
@@ -165,11 +166,11 @@ const Login = () => {
                             </div>
                           </div>
 
-                          <div class="col">
+                          <div className="col">
                             <Link to={"/forgotPass"}>Forgot password?</Link>
                           </div>
                         </div>
-                        <div class="text-center">
+                        <div className="text-center">
                           <p>
                             Not a member? <Link to={"/signup"}>Register</Link>
                           </p>
@@ -188,7 +189,7 @@ const Login = () => {
                       <img
                         src={Image}
                         className="img-fluid d-block mt-5"
-                        alt="Sample image"
+                        alt="Login Image"
                       />
                     </div>
                   </div>
@@ -198,6 +199,7 @@ const Login = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 };
